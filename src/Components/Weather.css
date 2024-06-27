@@ -7,7 +7,10 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-  }
+      background-color: #0079fa; /* Fallback color for older browsers */
+      background-image: linear-gradient(to bottom, #007bff, #00bfff); /* Blue linear gradient */
+    }
+    
   
   .search-bar {
     display: flex;

@@ -8,13 +8,11 @@ import humidity_icon from '../assets/humidity.png';
 import rain_icon from '../assets/rain.png';
 import snow_icon from '../assets/snow.png';
 import wind_icon from '../assets/wind.png';
-import day_icon from '../assets/day.png';
-import night_icon from '../assets/night.png';
+
 const Weather=()=>
     {
           const inputRef=useRef();
           const [weatherData,setWeatherData]=useState(false);
-          const [dayNightImage, setDayNightImage] = useState(day_icon);
 
           const allIcons={
              "01d":clear_icon,
@@ -61,16 +59,7 @@ const Weather=()=>
                     icon:icon
 
                   });
-                  const timeZoneOffset = data.timezone / 3600; 
-                  const hour = new Date().getUTCHours() + timeZoneOffset; 
-                  if (hour >= 6 && hour < 18) {
-                      
-                      setDayNightImage(day_icon);
-                  } else {
-                     
-                      setDayNightImage(night_icon);
-                  }
-
+                  
                } catch (error) {
                       setWeatherData(false);
                       console.error('Error in fetching weather data');
@@ -82,7 +71,7 @@ const Weather=()=>
                 search("London");
               },[])
         return(
-            <div className="weather" style={{ backgroundImage: `url(${dayNightImage})` }}>
+            <div className="weather">
                <div className="search-bar">
                  <input ref={inputRef} type="text" placeholder="search"/>
                  <img src={search_icon} alt="" onClick={()=>search(inputRef.current.value)}/>
